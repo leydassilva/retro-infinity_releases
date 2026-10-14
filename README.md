@@ -10,6 +10,7 @@ Os pacotes ficam na página [Releases](https://github.com/leydassilva/retro-infi
 | `Retro-Infinity-vX-Windows7-64bits.zip` | Windows 7 64 bits em diante; inclui PlayStation 2, GameCube, Wii e Xbox |
 | `Retro-Infinity-vX-scraper.zip` | ferramenta opcional para baixar imagens, vídeos e descrições num PC moderno |
 | `Retro-Infinity-vX-kit-iso-windows7.zip` | kit para montar um instalador do Windows 7 enxuto, com o Retro-Infinity, a partir da sua ISO ([instruções](#iso-do-windows-7-com-o-retro-infinity)) |
+| `Retro-Infinity-vX-kit-iso-windowsxp.zip` | o mesmo para o Windows XP SP3 (32 bits): um CD de instalação enxuto com o Retro-Infinity ([instruções](#cd-do-windows-xp-com-o-retro-infinity)) |
 
 ## Como instalar
 
@@ -46,7 +47,7 @@ A ISO do Windows não é distribuída aqui (é da Microsoft). Cada um monta a su
   - **Windows ADK**: só a parte "Ferramentas de Implantação" (traz o `oscdimg.exe`);
   - **MSYS2** ([msys2.org](https://www.msys2.org)) com o pacote `xorriso`.
 
-  **Não precisa instalar antes.** Se faltar o gravador, o script avisa que é pré-requisito e pergunta se pode instalar o MSYS2 (uns 500 MB) e o `xorriso`. Respondendo **N**, ele encerra sem alterar nada. *(A partir do kit da v0.5.2.)*
+  **Não precisa instalar antes.** Se faltar o gravador, o script avisa que é pré-requisito e pergunta se pode instalar o MSYS2 (uns 500 MB) e o `xorriso`. Respondendo **N**, ele encerra sem alterar nada. *(A partir da próxima release.)*
 - Espaço livre de umas 2,2 vezes o tamanho da ISO.
 - Internet: o script baixa a última versão do Retro-Infinity desta página.
 
@@ -91,6 +92,49 @@ A ISO do Windows não é distribuída aqui (é da Microsoft). Cada um monta a su
 - O que foi feito fica registrado em `C:\Windows\Setup\Scripts\RetroInfinity.log`.
 
 Os emuladores são baixados na primeira vez que o programa abre com internet. Drivers da placa de vídeo, se o Windows 7 não tiver, são por sua conta.
+
+## CD do Windows XP com o Retro-Infinity
+
+O kit `Retro-Infinity-vX-kit-iso-windowsxp.zip` faz o mesmo que o do Windows 7, a partir da **sua ISO do Windows XP SP3 de 32 bits**, com a versão de 32 bits do Retro-Infinity. *(A partir da próxima release.)*
+
+### Do que precisa
+
+- PowerShell no Windows 7, 8.1, 10 ou 11. **Não precisa de administrador**, a não ser para instalar o MSYS2.
+- Uma ISO de instalação do **Windows XP SP3 de 32 bits**. A original nunca é alterada.
+- A **chave do produto** do seu XP. O script pergunta. Se deixar em branco, a instalação pede durante a cópia dos arquivos.
+- O **xorriso** (MSYS2). Se faltar, o script avisa que é pré-requisito e pergunta se pode instalar. Respondendo **N**, encerra sem alterar nada.
+
+### Passo a passo
+
+1. Baixe o `Retro-Infinity-vX-kit-iso-windowsxp.zip` da última [release](https://github.com/leydassilva/retro-infinity_releases/releases/latest) e descompacte. Por exemplo, em `C:\kit-iso-windowsxp`.
+2. No PowerShell, rode:
+
+   ```powershell
+   cd C:\kit-iso-windowsxp
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\montar_iso.ps1 -IsoOriginal D:\pt-br_windows_xp_professional_with_service_pack_3_x86_cd.iso
+   ```
+
+   Digite a chave quando o script pedir, ou passe `-ChaveProduto XXXXX-XXXXX-XXXXX-XXXXX-XXXXX`. A ISO nova sai ao lado da original, com `_retro-infinity` no nome.
+3. **Grave num CD** ou use numa máquina virtual. O Rufus não grava a instalação do XP em pendrive; para isso existe o WinSetupFromUSB.
+4. A instalação segue sozinha. **Só a escolha do disco é manual.**
+
+As opções `-Saida`, `-PastaRetroInfinity`, `-IncluirIni` e `-PastaTrabalho` funcionam como no kit do Windows 7.
+
+### Atenção em PCs modernos
+
+- **Disco SATA:** o XP não tem driver para discos SATA em modo AHCI. A instalação dá tela azul `0x7B`. Antes de instalar, ponha o disco em modo **IDE / Compatível / Legacy** na BIOS.
+- **Ativação:** a ativação online do XP não funciona mais. Mídias de licença por volume (VLK) não pedem ativação; as outras podem exigir ativação por telefone.
+- **Segurança:** o XP não recebe atualizações desde 2014. Use o "console" só na rede de casa.
+
+### O que a instalação deixa pronto
+
+- **Idioma e conta:** português do Brasil, conta **Retro** sem senha e com login automático.
+- **Programa:** Retro-Infinity em `C:\Retro-Infinity`, abrindo junto com o Windows e liberado no firewall da rede local.
+- **O que não é instalado:** jogos do Windows, MSN Explorer, Windows Messenger, Outlook Express, Fax e acessórios.
+- **O que é desligado:** uns 35 serviços, entre eles a Central de Segurança, as Atualizações Automáticas, a Restauração do Sistema, os temas, a impressão, o compartilhamento de arquivos e o autoplay.
+- **Continuam ligados:** som, vídeo, rede com e sem fio, USB e joysticks.
+- O que foi feito fica registrado em `C:\WINDOWS\RetroInfinity.log`.
 
 ## O que não vem no pacote
 
