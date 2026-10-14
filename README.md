@@ -43,8 +43,10 @@ A ISO do Windows não é distribuída aqui (é da Microsoft). Cada um monta a su
 - Windows 8.1, 10 ou 11, com o **PowerShell como administrador**.
 - Uma ISO de instalação do **Windows 7 SP1**: 64 bits (recomendada) ou 32 bits. A original nunca é alterada.
 - Um gravador de ISO, um dos dois:
-  - **Windows ADK**: instale só a parte "Ferramentas de Implantação" (traz o `oscdimg.exe`);
-  - **MSYS2** ([msys2.org](https://www.msys2.org)): no terminal dele, rode `pacman -S xorriso`.
+  - **Windows ADK**: só a parte "Ferramentas de Implantação" (traz o `oscdimg.exe`);
+  - **MSYS2** ([msys2.org](https://www.msys2.org)) com o pacote `xorriso`.
+
+  **Não precisa instalar antes.** Se faltar o gravador, o script avisa que é pré-requisito e pergunta se pode instalar o MSYS2 (uns 500 MB) e o `xorriso`. Respondendo **N**, ele encerra sem alterar nada. *(A partir do kit da v0.5.2.)*
 - Espaço livre de umas 2,2 vezes o tamanho da ISO.
 - Internet: o script baixa a última versão do Retro-Infinity desta página.
 
