@@ -1,6 +1,6 @@
 # Retro-Infinity Multi-System — versões
 
-Downloads do **Retro-Infinity Multi-System**, um frontend de emuladores (libretro) para Windows com interface de TV, feito para controle ou teclado.
+Downloads do **Retro-Infinity Multi-System**, um frontend de emuladores (libretro) para Windows e Linux com interface de TV, feito para controle ou teclado.
 
 Os pacotes ficam na página [Releases](https://github.com/leydassilva/retro-infinity_releases/releases).
 
@@ -8,6 +8,7 @@ Os pacotes ficam na página [Releases](https://github.com/leydassilva/retro-infi
 |---|---|
 | `Retro-Infinity-vX-WindowsXP-32bits.zip` | Windows XP SP3 em diante (32 ou 64 bits) |
 | `Retro-Infinity-vX-Windows7-64bits.zip` | Windows 7 64 bits em diante; inclui PlayStation 2, GameCube, Wii e Xbox |
+| `Retro-Infinity-vX-Linux-x86_64.zip` | Linux 64 bits: Ubuntu 22.04/24.04 e Linux Mint 21/22 ([instruções](#linux-ubuntu-e-linux-mint)) |
 | `Retro-Infinity-vX-scraper.zip` | ferramenta opcional para baixar imagens, vídeos e descrições num PC moderno |
 | `Retro-Infinity-vX-kit-iso-windows7.zip` | kit para montar um instalador do Windows 7 enxuto, com o Retro-Infinity, a partir da sua ISO ([instruções](#iso-do-windows-7-com-o-retro-infinity)) |
 | `Retro-Infinity-vX-kit-iso-windowsxp.zip` | o mesmo para o Windows XP SP3 (32 bits): um CD de instalação enxuto com o Retro-Infinity ([instruções](#cd-do-windows-xp-com-o-retro-infinity)) |
@@ -20,6 +21,18 @@ Os pacotes ficam na página [Releases](https://github.com/leydassilva/retro-infi
 4. Algumas plataformas precisam da BIOS do console: veja `sistema\LEIA-ME - BIOS.txt`.
 
 O manual completo está no `LEIA-ME.md`, dentro do pacote.
+
+## Linux (Ubuntu e Linux Mint)
+
+1. Baixe o `Retro-Infinity-vX-Linux-x86_64.zip` e descompacte onde quiser (ex.: na sua pasta pessoal).
+2. No terminal, dentro da pasta `Retro-Infinity`, rode uma vez:
+   ```bash
+   ./criar-atalho.sh
+   ```
+   O script confere as bibliotecas que o programa usa: SDL2, cairo, FreeType e a fonte DejaVu, que já vêm no Ubuntu e no Mint. Se faltar alguma, ele pergunta antes de instalar; se a resposta for não, só encerra. Depois cria o atalho **Retro-Infinity Multi-System** no menu de aplicativos e na área de trabalho.
+3. Abra pelo atalho ou com `./multijogos`. Os jogos vão em `roms/<plataforma>`, como no Windows. O mesmo `multijogos.ini` serve nos dois sistemas.
+
+Ainda não vêm na versão Linux: emuladores 3D (Nintendo 64, PlayStation 2, GameCube e Wii, que precisam de OpenGL), música de fundo, prévias em vídeo e o editor de informações. Eles chegam nas próximas versões, pelo atualizador.
 
 ## Atualizações
 
