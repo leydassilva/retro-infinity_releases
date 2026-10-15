@@ -9,6 +9,7 @@ Os pacotes ficam na página [Releases](https://github.com/leydassilva/retro-infi
 | `Retro-Infinity-vX-WindowsXP-32bits.zip` | Windows XP SP3 em diante (32 ou 64 bits) |
 | `Retro-Infinity-vX-Windows7-64bits.zip` | Windows 7 64 bits em diante; inclui PlayStation 2, GameCube, Wii e Xbox |
 | `Retro-Infinity-vX-Linux-x86_64.zip` | Linux 64 bits: Ubuntu 22.04/24.04 e Linux Mint 21/22 ([instruções](#linux-ubuntu-e-linux-mint)) |
+| `Retro-Infinity-OS-vX-x86_64.iso` | **Retro-Infinity OS**: sistema completo que liga direto no Retro-Infinity, como um console ([instruções](#retro-infinity-os-iso-linux)) |
 | `Retro-Infinity-vX-scraper.zip` | ferramenta opcional para baixar imagens, vídeos e descrições num PC moderno |
 | `Retro-Infinity-vX-kit-iso-windows7.zip` | kit para montar um instalador do Windows 7 enxuto, com o Retro-Infinity, a partir da sua ISO ([instruções](#iso-do-windows-7-com-o-retro-infinity)) |
 | `Retro-Infinity-vX-kit-iso-windowsxp.zip` | o mesmo para o Windows XP SP3 (32 bits): um CD de instalação enxuto com o Retro-Infinity ([instruções](#cd-do-windows-xp-com-o-retro-infinity)) |
@@ -33,6 +34,23 @@ O manual completo está no `LEIA-ME.md`, dentro do pacote.
 3. Abra pelo atalho ou com `./multijogos`. Os jogos vão em `roms/<plataforma>`, como no Windows. O mesmo `multijogos.ini` serve nos dois sistemas.
 
 Ainda não vêm na versão Linux: emuladores 3D (Nintendo 64, PlayStation 2, GameCube e Wii, que precisam de OpenGL), música de fundo, prévias em vídeo e o editor de informações. Eles chegam nas próximas versões, pelo atualizador.
+
+## Retro-Infinity OS (ISO Linux)
+
+Sistema completo, baseado no Ubuntu 22.04 e só com software livre, que liga direto no Retro-Infinity em tela cheia, sem área de trabalho. Dá para usar só com joystick. Precisa de um PC de 64 bits com 2 GB de RAM; com UEFI, desligue o Secure Boot.
+
+1. Grave o `Retro-Infinity-OS-vX-x86_64.iso` num pendrive com o [balenaEtcher](https://etcher.balena.io/), o Rufus ou o `dd`, ou num DVD.
+   - **No Rufus, use o modo DD.** Ao clicar em "Iniciar", escolha **"Gravar no modo Imagem DD"**. No modo ISO (o "recomendado" dele), o boot para numa tela preta com `GRUB _`.
+2. Ligue o PC pelo pendrive. O menu de boot tem três opções:
+   - **Retro-Infinity OS:** roda ao vivo, sem tocar no disco; o que for gravado some ao desligar;
+   - **vídeo em modo seguro:** para placas que não mostram imagem na opção normal;
+   - **Instalar no disco:** apaga o disco escolhido (pede para digitar `APAGAR`) e deixa o PC ligando direto no Retro-Infinity.
+3. Os jogos ficam em `/home/retro/Retro-Infinity/roms/<plataforma>`. Também dá para enviá-los pelo celular: **Menu → Conteúdo e downloads → Receber jogos pela rede**. Os emuladores são baixados com internet por cabo.
+
+No menu do Retro-Infinity OS:
+- **Desligar / Reiniciar** fica no lugar de "Sair".
+- **Interface e tema → Resolução da tela:** troca a resolução, pergunta se mantém e, sem resposta em 15 segundos, volta à anterior.
+- **Sistema → Abrir console:** abre um terminal (usuário `retro`, `sudo` sem senha, `nmtui` para o Wi-Fi). O `exit` volta ao programa.
 
 ## Atualizações
 
